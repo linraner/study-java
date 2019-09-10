@@ -111,7 +111,7 @@ public class DefaultBeanFactory implements BeanFactory, BeanDefinitionRegistry, 
      */
     public Object doGetBean(String beanName) throws Exception {
         if (!beanMap.containsKey(beanName)) {
-            logger.info("[" + beanName + "]不存在");
+            logger.info("[beanName: " + beanName + "]不存在");
         }
 
         // 记录正在创建的bean
@@ -131,8 +131,8 @@ public class DefaultBeanFactory implements BeanFactory, BeanDefinitionRegistry, 
         if (intsance != null) {
             return intsance;
         }
-        // 不存在 进行创建
-        if (!this.bdMap.containsKey(beanName)) {
+        // 不存在 进行创建 FIX:
+        if (!this.bdMap.containsKey(beanName) || this.bdMap.get(beanName) == null) {
             logger.info("不存在名为：[" + beanName + "]的bean定义,即将进行创建");
         }
         BeanDefinition bd = this.bdMap.get(beanName);

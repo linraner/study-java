@@ -5,5 +5,8 @@ package com.lin;
  * @email: linran@live.com
  * @create: 2019-09-08 16:30
  **/
-public class  {
+public class Main {
+    public static void main(String[] args) {
+
+    }
 }
