@@ -14,7 +14,7 @@ public class ThreadUUIDDemo {
 
     public static void main(String[] args) {
         ThreadUUIDDemo threadUUIDDemo = new ThreadUUIDDemo();
-        threadUUIDDemo.testRun();
+        threadUUIDDemo.testRun2();
     }
 
     private void testRun() {
@@ -31,6 +31,25 @@ public class ThreadUUIDDemo {
                         e.printStackTrace();
                     }
 
+                }
+            });
+        }
+        executorService.shutdown();
+    }
+
+    private void testRun2() {
+        ExecutorService executorService = Executors.newFixedThreadPool(10);
+        for (int i = 0; i < 10; i++) {
+            executorService.submit(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        String UUID = java.util.UUID.randomUUID().toString().replaceAll("-", "");
+                        System.out.println("thread " + Thread.currentThread().getName() + " UUID: " + UUID + " do time: " + System.currentTimeMillis());
+                        countDownLatch.await();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
             });
         }
