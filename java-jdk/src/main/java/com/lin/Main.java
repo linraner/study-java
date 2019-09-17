@@ -22,5 +22,9 @@ public class Main {
         String str = "1-2-3-4-5-6";
         List<String> list = Splitter.on("-").splitToList(str);
         list.stream().forEach(System.out::println);
+
+
     }
+
+
 }
