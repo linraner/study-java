@@ -1,4 +1,4 @@
-package com.lin.guava.example;
+package com.lin.guava.example.collection;
 
 import com.google.common.collect.HashBasedTable;
 

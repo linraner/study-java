@@ -1,10 +1,11 @@
-package com.lin.guava.example;
+package com.lin.guava.example.collection;
 
 import com.google.common.base.Function;
 import com.google.common.base.Joiner;
 import com.google.common.base.Predicate;
 import com.google.common.collect.FluentIterable;
 import com.google.common.collect.Lists;
+import com.lin.guava.example.entity.Person;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
 import java.util.ArrayList;

@@ -1,6 +1,7 @@
-package com.lin.guava.example;
+package com.lin.guava.example.collection;
 
 import com.google.common.collect.Lists;
+import com.lin.guava.example.entity.Person;
 
 import java.util.Iterator;
 import java.util.List;

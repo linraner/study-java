@@ -1,4 +1,4 @@
-package com.lin.guava.example;
+package com.lin.guava.example.collection;
 
 import com.google.common.base.CharMatcher;
 import com.google.common.base.Charsets;
