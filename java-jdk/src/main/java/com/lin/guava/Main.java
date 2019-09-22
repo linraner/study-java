@@ -6,7 +6,8 @@ import com.google.common.base.Optional;
 import com.google.common.collect.ComparisonChain;
 import com.google.common.collect.Ordering;
 import com.google.common.primitives.Ints;
-import jdk.internal.jline.internal.Nullable;
+
+import javax.annotation.Nullable;
 
 /**
  * @author: linran
