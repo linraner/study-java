@@ -1,4 +1,4 @@
-package com.lin.juc;
+package com.lin.juc.commondemo;
 
 import java.util.concurrent.*;
 
