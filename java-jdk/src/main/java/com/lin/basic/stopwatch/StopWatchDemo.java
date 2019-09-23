@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
  * @author: linran
  * @email: linran@live.com
  * @create: 2019-09-23 20:57
- * @Description:性能检测工具 这个是
+ * @Description:性能检测工具 这个是简陋的Guava的没有Spring Boot的好用
  **/
 public class StopWatchDemo {
     public static void main(String[] args) throws InterruptedException {
