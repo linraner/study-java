@@ -1,4 +1,4 @@
-package com.lin.juc.mydesign;
+package com.lin.juc.mydesign.deadlock;
 
 /**
  * @author: linran
@@ -11,7 +11,7 @@ public class DeadLockSimulation {
     private static String B = "b";
 
     public static void main(String[] args) {
-        new ScanDeadLock().scanDeadLock();
+//        new ScanDeadLock().scanDeadLock();
         new DeadLockSimulation().deadLock();
     }
 

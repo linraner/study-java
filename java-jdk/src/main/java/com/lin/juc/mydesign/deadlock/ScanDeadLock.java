@@ -1,4 +1,4 @@
-package com.lin.juc.mydesign;
+package com.lin.juc.mydesign.deadlock;
 
 import java.lang.management.ManagementFactory;
 import java.lang.management.ThreadInfo;
