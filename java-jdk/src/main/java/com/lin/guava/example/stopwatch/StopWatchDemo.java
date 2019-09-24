@@ -1,4 +1,4 @@
-package com.lin.basic.stopwatch;
+package com.lin.guava.example.stopwatch;
 
 
 import com.google.common.base.Stopwatch;
