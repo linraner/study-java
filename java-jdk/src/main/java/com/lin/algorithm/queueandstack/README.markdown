@@ -75,14 +75,54 @@ int BFS(Node root, Node target) {
 ## 逆波兰表达式求值
 
 ## 栈和深度优先搜索
-### DFS模板
-
-### DFS模板(2)
+### DFS模板一
+```
+/*
+ * Return true if there is a path from cur to target.
+ */
+boolean DFS(Node cur, Node target, Set<Node> visited) {
+    return true if cur is target;
+    for (next : each neighbor of cur) {
+        if (next is not in visited) {
+            add next to visted;
+            return true if DFS(next, target, visited) == true;
+        }
+    }
+    return false;
+}
+```
+### DFS模板二
+```
+/*
+ * Return true if there is a path from cur to target.
+ */
+boolean DFS(int root, int target) {
+    Set<Node> visited;
+    Stack<Node> s;
+    add root to s;
+    while (s is not empty) {
+        Node cur = the top element in s;
+        return true if cur is target;
+        for (Node next : the neighbors of cur) {
+            if (next is not in visited) {
+                add next to s;
+                add next to visited;
+            }
+        }
+        remove cur from s;
+    }
+    return false;
+}
+```
 
 ### 二叉树的中序遍历
 
 # 小结
 ## 用栈实现队列
+
 ## 用队列实现栈
+
 ## 字符串编码
+
 ## 01矩阵
+
