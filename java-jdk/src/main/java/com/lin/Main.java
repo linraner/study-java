@@ -23,8 +23,22 @@ public class Main {
         List<String> list = Splitter.on("-").splitToList(str);
 //        list.stream().forEach(System.out::println);
 
-
-
+        String s = "asdaszhdhh";
+        System.out.println(s);
+        int[] map = new int[26];
+        for (int i = 0; i < 26; i++) {
+            map[i] = 0;
+        }
+        for (int i = 0; i < s.length(); i++) {
+            map[s.charAt(i) - 'a']++;
+        }
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < map.length; i++) {
+            if (map[i] != 0) {
+                sb.append((char) ('a' + i));
+            }
+        }
+        System.out.println(sb);
     }
 
 
