@@ -14,63 +14,43 @@ import java.util.concurrent.TimeUnit;
  * 方法再返回结果 你来怎么保证线程正确执行
  **/
 public class Main {
-    static CountDownLatch latch = new CountDownLatch(4);
+    static CountDownLatch latch = new CountDownLatch(1);
 
     public static void main(String[] args) throws IOException, InterruptedException {
         String path = "D:/program/java/my/java-study/java-jdk/src/main/java/com/lin/juc/problem/p1/test.txt";
 
-//        int ans = getFileLineNum(path);
-//        latch.await();
+//        int ans = getFileLineNum1(path);
+//        System.out.println("ans = " + ans);
 
-
-        int ans = getFileLineNum1(path);
-//        latch.await(3,TimeUnit.SECONDS);
+        int ans = getFileLineNum2(path);
+        latch.countDown();//这个地方没有生效? 使用超时机制
         System.out.println(ans);
     }
 
-    static int getFileLineNum(String path) throws IOException {
+    static int getFileLineNum2(String path) throws IOException, InterruptedException {
         String file = Files.readString(Paths.get(path));
         Thread t1 = new Thread(new Runnable() {
             @Override
             public void run() {
-                try {
-                    System.out.println("t1 get line is : " + file.lines().count());
-                    latch.await();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                System.out.println("t1 get line is : " + file.lines().count());
             }
         });
         Thread t2 = new Thread(new Runnable() {
             @Override
             public void run() {
-                try {
-                    System.out.println("t2 get line is : " + file.lines().count());
-                    latch.await();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                System.out.println("t2 get line is : " + file.lines().count());
             }
         });
         Thread t3 = new Thread(new Runnable() {
             @Override
             public void run() {
-                try {
-                    System.out.println("t3 get line is : " + file.lines().count());
-                    latch.await();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                System.out.println("t3 get line is : " + file.lines().count());
             }
         });
         t1.start();
-//        latch.countDown();
         t2.start();
-//        latch.countDown();
         t3.start();
-//        latch.countDown();
-//        latch.countDown();
-//        latch.countDown();
+        latch.await(1, TimeUnit.SECONDS);
         return (int) file.lines().count();
     }
 
@@ -99,9 +79,9 @@ public class Main {
         t2.start();
         t3.start();
 
-//        t1.join();
-//        t2.join();
-//        t3.join();
+        t1.join();
+        t2.join();
+        t3.join();
         return (int) file.lines().count();
     }
 }
