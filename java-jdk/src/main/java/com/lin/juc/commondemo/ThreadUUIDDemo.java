@@ -8,7 +8,7 @@ import java.util.concurrent.*;
  * @author: linran
  * @email: linran@live.com
  * @create: 2019-09-09 09:12
- * @Description UUID并行情况下可能会出现重复 TODO:
+ * @Description UUID并行情况下可能会出现重复
  **/
 public class ThreadUUIDDemo {
     final static int capacity = 100;
