@@ -8,6 +8,12 @@ import com.google.common.base.Stopwatch;
  * @create: 2019-09-08 16:31
  **/
 public class Test {
-    public static void main(String[] args) throws InterruptedException {
+     public static void main(String[] args) throws InterruptedException {
+        for (int i = 1; i >= 0 ; i++) {
+            if (i >= Integer.MAX_VALUE-1) {
+                System.out.println(i);
+            }
+        }
+        System.out.println("ans");
     }
 }
