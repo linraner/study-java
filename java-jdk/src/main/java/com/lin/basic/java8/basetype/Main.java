@@ -59,11 +59,5 @@ public class Main {
         System.out.println(summary.getMin());
         System.out.println(summary.getCount());
 
-
-
-
-
-
-
     }
 }
