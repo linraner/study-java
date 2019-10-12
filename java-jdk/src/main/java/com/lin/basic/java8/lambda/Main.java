@@ -60,6 +60,12 @@ public class Main {
         stream.myForEach(str -> System.out.println(str));
 
 
+
+    }
+
+    static void test() {
+        System.out.println("this is a test demo");
+
     }
 
     @Override
