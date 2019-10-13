@@ -9,11 +9,8 @@ import com.google.common.base.Stopwatch;
  **/
 public class Test {
      public static void main(String[] args) throws InterruptedException {
-        for (int i = 1; i >= 0 ; i++) {
-            if (i >= Integer.MAX_VALUE-1) {
-                System.out.println(i);
-            }
-        }
-        System.out.println("ans");
+         System.out.println("1\n" +
+                 "0\n" +
+                 "3");
     }
 }
