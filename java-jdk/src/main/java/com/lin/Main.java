@@ -20,8 +20,8 @@ public class Main {
     );
 
     public static void main(String[] args) throws InterruptedException {
-        String str = "1-2-3-4-5-6";
-        List<String> list = Splitter.on("-").splitToList(str);
+//        String str = "1-2-3-4-5-6";
+//        List<String> list = Splitter.on("-").splitToList(str);
 //        list.stream().forEach(System.out::println);
 /*
         String s = "asdaszhdhh";

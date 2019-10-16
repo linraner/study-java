@@ -1,7 +1,5 @@
 package com.lin.juc.commondemo;
 
-import java.util.HashSet;
-import java.util.Set;
 import java.util.concurrent.*;
 
 /**
@@ -16,7 +14,7 @@ public class ThreadUUIDDemo {
     static CountDownLatch countDownLatch = new CountDownLatch(capacity + 1);
     static ExecutorService executorService = Executors.newFixedThreadPool(5);
 
-//    static Set<String> set = new HashSet<>(capacity);
+    //    static Set<String> set = new HashSet<>(capacity);
     static ConcurrentSkipListSet set = new ConcurrentSkipListSet();
 
     public static void main(String[] args) throws InterruptedException {
