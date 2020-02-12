@@ -11,6 +11,7 @@
     <modules>
         <module>java-jdk</module>
         <module>my-spring</module>
+      <module>interview</module>
     </modules>
 
 
