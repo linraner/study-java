@@ -1,6 +1,7 @@
 package com.lin;
 
 import com.google.common.collect.ImmutableSet;
+import com.lin.domain.Luck;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
@@ -9,6 +10,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import org.apache.http.util.Asserts;
+import org.checkerframework.checker.nullness.qual.AssertNonNullIfNonNull;
 
 /**
  * @author: linran
@@ -60,8 +63,17 @@ public class Main {
     String[] ss = s.split("^#([0-9]{1})#");
     Pattern p = Pattern.compile("[^0-9]");
     Matcher m = p.matcher(s);
-    System.out.println(m.replaceAll("").trim());
+//    System.out.println(m.replaceAll("").trim());
 
+    Luck l1 = new Luck("少女粉", "小熊", "小纠结");
+    Luck l2 = new Luck("少女粉", "小熊", "小纠结");
+    Luck l3 = new Luck("快乐黄", "小熊", "小纠结");
+
+    System.out.println(l1.hashCode());
+    System.out.println(l3.hashCode());
+    System.out.println(l1.hashCode() == l2.hashCode());
+    l1.setColor("快乐黄");
+    System.out.println(l1.hashCode() == l3.hashCode());
 
   }
 
