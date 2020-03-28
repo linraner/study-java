@@ -2,8 +2,10 @@ package com.lin;
 
 import com.google.common.collect.ImmutableSet;
 import com.lin.domain.Luck;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 import java.util.regex.Matcher;
@@ -69,11 +71,23 @@ public class Main {
     Luck l2 = new Luck("少女粉", "小熊", "小纠结");
     Luck l3 = new Luck("快乐黄", "小熊", "小纠结");
 
+    /*
     System.out.println(l1.hashCode());
     System.out.println(l3.hashCode());
     System.out.println(l1.hashCode() == l2.hashCode());
     l1.setColor("快乐黄");
     System.out.println(l1.hashCode() == l3.hashCode());
+     */
+    Luck l4 = new Luck();
+    l4.setColor("少女粉");
+    System.out.println(l4.hashCode());
+    l4.setMascot("小熊");
+    System.out.println(l4.hashCode());
+    l4.setMind("小纠结");
+    System.out.println(l4.hashCode() == l1.hashCode());
+
+    Map map = new HashMap<>();
+
 
   }
 

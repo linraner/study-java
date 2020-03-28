@@ -65,6 +65,13 @@
             <artifactId>ant</artifactId>
             <version>1.10.6</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.67</version>
+        </dependency>
+
 
 
     </dependencies>
