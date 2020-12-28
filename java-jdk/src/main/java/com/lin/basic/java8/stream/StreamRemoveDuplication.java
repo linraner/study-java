@@ -15,8 +15,7 @@ public class StreamRemoveDuplication {
 
     lists.stream()
         .distinct()
-        .collect(Collectors.toList());
-    System.out.println(lists);
+        .forEach(System.out::println);
   }
 
 }
