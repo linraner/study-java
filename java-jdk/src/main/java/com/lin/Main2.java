@@ -7,11 +7,18 @@ import java.util.Scanner;
 public class Main2 {
 
   public static void main(String[] args) {
-    Scanner cin = new Scanner(System.in);
+//    Scanner cin = new Scanner(System.in);
+//
+//    String s = cin.next();
+//
+//    System.out.println(salve(s));
 
-    String s = cin.next();
+    ClassLoader classLoader = Main2.class.getClassLoader();
+    System.out.println(classLoader.getResource("com/lin/Main2.class"));
 
-    System.out.println(salve(s));
+
+
+
 
   }
 
