@@ -1,8 +1,10 @@
 package com.lin;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 
 public class Main2 {
 
@@ -13,11 +15,15 @@ public class Main2 {
 //
 //    System.out.println(salve(s));
 
-    ClassLoader classLoader = Main2.class.getClassLoader();
-    System.out.println(classLoader.getResource("com/lin/Main2.class"));
+//    ClassLoader classLoader = Main2.class.getClassLoader();
+//    System.out.println(classLoader.getResource("com/lin/Main2.class"));
+    String s = "";
 
+    List<String> dest = new ArrayList<>();
 
+    List<String> src = new ArrayList<>();
 
+    Collections.copy(dest, src);
 
 
   }

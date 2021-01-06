@@ -50,7 +50,7 @@ public class ThreadUUIDDemo {
                 public void run() {
                     try {
                         String UUID = java.util.UUID.randomUUID().toString().replaceAll("-", "");
-//                        System.out.println("thread " + Thread.currentThread().getName() + " UUID: " + UUID + " do time: " + System.currentTimeMillis());
+                        System.out.println("thread " + Thread.currentThread().getName() + " UUID: " + UUID + " do time: " + System.currentTimeMillis());
                         set.add(UUID);
                         countDownLatch.await(1, TimeUnit.SECONDS);
                     } catch (InterruptedException e) {
