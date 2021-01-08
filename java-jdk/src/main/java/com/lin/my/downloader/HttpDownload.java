@@ -36,9 +36,9 @@ public class HttpDownload {
 
     public static void main(String[] args) throws IOException {
         String url = "https://mirrors.tuna.tsinghua.edu.cn/archlinux/community/os/x86_64/adobe-source-han-sans-hk-fonts-2.001-1-any.pkg.tar.xz";
-        String localPath = "D://";
+        String localPath = "~/tmp/";
 //        String url = "http://mirrors.163.com/debian/ls-lR.gz";
-        new HttpDownload(url, "D:/test.pkg.tar.xz", 1, 5000).get();
+        new HttpDownload(url, "~/tmp/test.pkg.tar.xz", 1, 5000).get();
     }
 
     public HttpDownload(String url, String localPath) throws MalformedURLException {
