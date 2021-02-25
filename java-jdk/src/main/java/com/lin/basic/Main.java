@@ -13,22 +13,21 @@ public class Main {
   public static void main(String[] args) throws InterruptedException {
 //    testCall();
 
-    testWhile(false);
+    testWhile(true);
 
   }
 
   static void testWhile(boolean running) throws InterruptedException {
-    while (true) {
+    while (running) {
       while (running) {
-        while (running) {
-          Thread.sleep(1000);
-          System.out.println("test 1");
-          running = false;
-        }
-        Thread.sleep(2000);
+        Thread.sleep(1000);
+        System.out.println("test 1");
         running = false;
-        System.out.println("test 2");
       }
+      Thread.sleep(2000);
+      System.out.println("test 2");
+      Thread.sleep(1000);
+      running = true;
     }
   }
 
