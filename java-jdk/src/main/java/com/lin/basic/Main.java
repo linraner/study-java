@@ -11,6 +11,23 @@ public class Main {
 
 
   public static void main(String[] args) throws InterruptedException {
+//    testCall();
+
+    testWhile();
+
+  }
+
+  static void testWhile() {
+    while (true) {
+      while (true) {
+        while (true) {
+          System.out.println("test 1");
+        }
+      }
+    }
+  }
+
+  static void testCall() throws InterruptedException {
     ExecutorService executorService = Executors.newFixedThreadPool(2);
 
     for (int i = 0; i < 100; i++) {
