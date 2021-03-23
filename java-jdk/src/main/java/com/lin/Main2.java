@@ -1,10 +1,9 @@
 package com.lin;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import com.google.common.collect.Lists;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import org.apache.commons.lang3.tuple.Pair;
 
 public class Main2 {
 
@@ -17,14 +16,20 @@ public class Main2 {
 
 //    ClassLoader classLoader = Main2.class.getClassLoader();
 //    System.out.println(classLoader.getResource("com/lin/Main2.class"));
-    String s = "";
+//    String s = "";
+//
+//    List<String> dest = new ArrayList<>();
+//
+//    List<String> src = new ArrayList<>();
+//
+//    Collections.copy(dest, src);
 
-    List<String> dest = new ArrayList<>();
-
-    List<String> src = new ArrayList<>();
-
-    Collections.copy(dest, src);
-
+    var list = Lists.newArrayList(
+        Pair.of("a", "a1"),
+        Pair.of("a", "a2"),
+        Pair.of("b", "b1"),
+        Pair.of("b", "b2")
+    );
 
   }
 
