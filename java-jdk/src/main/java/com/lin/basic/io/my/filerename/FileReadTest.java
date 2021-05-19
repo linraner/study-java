@@ -27,10 +27,11 @@ public class FileReadTest {
       String str = null;
       while (true) {
         str = reader.readLine();
-        if(str!=null)
+        if (str != null) {
           System.out.println(str);
-        else
+        } else {
           break;
+        }
       }
       is.close();
     } catch (Exception e) {

@@ -7,4 +7,5 @@ package com.lin.guava.example.concurrent;
  * @Description:TODO:https://my.oschina.net/u/1024107/blog/747494
  **/
 public class ListenableFutureExample {
+
 }

@@ -9,7 +9,6 @@ import java.util.UUID;
 public class JDKForEach {
 
 
-
   public static void main(String[] args) {
     List<User> users = new ArrayList<>(5);
 

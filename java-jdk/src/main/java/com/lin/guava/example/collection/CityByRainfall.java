@@ -2,7 +2,6 @@ package com.lin.guava.example.collection;
 
 import com.google.common.primitives.Doubles;
 import com.lin.guava.example.entity.City;
-
 import java.util.Comparator;
 
 /**
@@ -12,8 +11,9 @@ import java.util.Comparator;
  * @Description:
  **/
 public class CityByRainfall implements Comparator<City> {
-    @Override
-    public int compare(City o1, City o2) {
-        return Doubles.compare(o1.getAverageRainfall(), o2.getAverageRainfall());
-    }
+
+  @Override
+  public int compare(City o1, City o2) {
+    return Doubles.compare(o1.getAverageRainfall(), o2.getAverageRainfall());
+  }
 }

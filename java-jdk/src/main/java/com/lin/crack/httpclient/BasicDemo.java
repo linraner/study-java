@@ -7,7 +7,8 @@ package com.lin.crack.httpclient;
  * @Description:
  **/
 public class BasicDemo {
-    public static void main(String[] args) {
 
-    }
+  public static void main(String[] args) {
+
+  }
 }

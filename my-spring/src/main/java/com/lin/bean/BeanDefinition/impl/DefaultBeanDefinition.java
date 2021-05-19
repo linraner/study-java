@@ -1,7 +1,6 @@
 package com.lin.bean.BeanDefinition.impl;
 
 import com.lin.bean.BeanDefinition.BeanDefinition;
-
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.util.List;
@@ -13,150 +12,151 @@ import java.util.Map;
  * @create: 2019-09-08 17:12
  **/
 public class DefaultBeanDefinition implements BeanDefinition {
-    private Class<?> clazz;
 
-    private String beanName;
-    private String beanFactoryName;
+  private Class<?> clazz;
 
-    private String createBeanMethodName;
-    private String staticCreateBeanMethodName;
-    private String beanInitMethodName;
-    private String beanDestoryMethodName;
+  private String beanName;
+  private String beanFactoryName;
 
-    private boolean isSingleton;
+  private String createBeanMethodName;
+  private String staticCreateBeanMethodName;
+  private String beanInitMethodName;
+  private String beanDestoryMethodName;
 
-    private Constructor constructor;
-    private Method method;
+  private boolean isSingleton;
 
-    private List<?> constructorArg;
-    private Map<String, Object> values;
+  private Constructor constructor;
+  private Method method;
 
-    public void setClazz(Class<?> clazz) {
-        this.clazz = clazz;
-    }
+  private List<?> constructorArg;
+  private Map<String, Object> values;
 
-    public void setBeanFactoryName(String beanFactoryName) {
-        this.beanFactoryName = beanFactoryName;
-    }
+  public void setClazz(Class<?> clazz) {
+    this.clazz = clazz;
+  }
 
-    public void setCreateBeanMethodName(String createBeanMethodName) {
-        this.createBeanMethodName = createBeanMethodName;
-    }
+  public void setBeanFactoryName(String beanFactoryName) {
+    this.beanFactoryName = beanFactoryName;
+  }
 
-    public void setStaticCreateBeanMethodName(String staticCreateBeanMethodName) {
-        this.staticCreateBeanMethodName = staticCreateBeanMethodName;
-    }
+  public void setCreateBeanMethodName(String createBeanMethodName) {
+    this.createBeanMethodName = createBeanMethodName;
+  }
 
-    public void setMethod(Method method) {
-        this.method = method;
-    }
+  public void setStaticCreateBeanMethodName(String staticCreateBeanMethodName) {
+    this.staticCreateBeanMethodName = staticCreateBeanMethodName;
+  }
 
-    public void setValues(Map<String, Object> values) {
-        this.values = values;
-    }
+  public void setMethod(Method method) {
+    this.method = method;
+  }
 
-    @Override
-    public Class<?> getBeanClass() {
-        return this.clazz;
-    }
+  public void setValues(Map<String, Object> values) {
+    this.values = values;
+  }
 
-    @Override
-    public String getBeanName() {
-        return this.beanName;
-    }
+  @Override
+  public Class<?> getBeanClass() {
+    return this.clazz;
+  }
 
-    public void setBeanName(String beanName) {
-        this.beanName = beanName;
-    }
+  @Override
+  public String getBeanName() {
+    return this.beanName;
+  }
 
-    @Override
-    public String getBeanFactory() {
-        return this.beanFactoryName;
-    }
+  public void setBeanName(String beanName) {
+    this.beanName = beanName;
+  }
 
-    @Override
-    public String getCreateBeanMethod() {
-        return this.createBeanMethodName;
-    }
+  @Override
+  public String getBeanFactory() {
+    return this.beanFactoryName;
+  }
 
-    @Override
-    public String getStaticCreateBeanMethod() {
-        return this.staticCreateBeanMethodName;
-    }
+  @Override
+  public String getCreateBeanMethod() {
+    return this.createBeanMethodName;
+  }
 
-    @Override
-    public String getBeanInitMethodName() {
-        return this.beanInitMethodName;
-    }
+  @Override
+  public String getStaticCreateBeanMethod() {
+    return this.staticCreateBeanMethodName;
+  }
 
-    public void setBeanInitMethodName(String beanInitMethodName) {
-        this.beanInitMethodName = beanInitMethodName;
-    }
+  @Override
+  public String getBeanInitMethodName() {
+    return this.beanInitMethodName;
+  }
 
-    @Override
-    public String getBeanDestoryMethodName() {
-        return this.beanDestoryMethodName;
-    }
+  public void setBeanInitMethodName(String beanInitMethodName) {
+    this.beanInitMethodName = beanInitMethodName;
+  }
 
-    public void setBeanDestoryMethodName(String beanDestoryMethodName) {
-        this.beanDestoryMethodName = beanDestoryMethodName;
-    }
+  @Override
+  public String getBeanDestoryMethodName() {
+    return this.beanDestoryMethodName;
+  }
 
-    @Override
-    public String getScope() {
-        return this.isSingleton ? BeanDefinition.SINGLETON : BeanDefinition.PROTOTYPE;
-    }
+  public void setBeanDestoryMethodName(String beanDestoryMethodName) {
+    this.beanDestoryMethodName = beanDestoryMethodName;
+  }
 
-    @Override
-    public boolean isSingleton() {
-        return this.isSingleton;
-    }
+  @Override
+  public String getScope() {
+    return this.isSingleton ? BeanDefinition.SINGLETON : BeanDefinition.PROTOTYPE;
+  }
 
-    public void setSingleton(boolean singleton) {
-        isSingleton = singleton;
-    }
+  @Override
+  public boolean isSingleton() {
+    return this.isSingleton;
+  }
 
-    @Override
-    public boolean isPrototype() {
-        return !this.isSingleton;
-    }
+  public void setSingleton(boolean singleton) {
+    isSingleton = singleton;
+  }
 
-    @Override
-    public List<?> getConstructorArg() {
-        return this.constructorArg;
-    }
+  @Override
+  public boolean isPrototype() {
+    return !this.isSingleton;
+  }
 
-    public void setConstructorArg(List<?> constructorArg) {
-        this.constructorArg = constructorArg;
-    }
+  @Override
+  public List<?> getConstructorArg() {
+    return this.constructorArg;
+  }
 
-    @Override
-    public Constructor<?> getConstructor() {
-        return this.constructor;
-    }
+  public void setConstructorArg(List<?> constructorArg) {
+    this.constructorArg = constructorArg;
+  }
 
-    @Override
-    public void setConstructor(Constructor<?> constructor) {
-        this.constructor = constructor;
-    }
+  @Override
+  public Constructor<?> getConstructor() {
+    return this.constructor;
+  }
 
-    @Override
-    public Method getFactoryMethod() {
-        return this.method;
-    }
+  @Override
+  public void setConstructor(Constructor<?> constructor) {
+    this.constructor = constructor;
+  }
 
-    @Override
-    public void setFactoryMethod(Method factoryMethod) {
-        this.method = factoryMethod;
-    }
+  @Override
+  public Method getFactoryMethod() {
+    return this.method;
+  }
 
-    @Override
-    public Map<String, Object> getPropertyKeyValue() {
-        return this.values;
-    }
+  @Override
+  public void setFactoryMethod(Method factoryMethod) {
+    this.method = factoryMethod;
+  }
 
-    @Override
-    public void setPropertyKeyValue(Map<String, Object> properties) {
-        this.values = properties;
-    }
+  @Override
+  public Map<String, Object> getPropertyKeyValue() {
+    return this.values;
+  }
+
+  @Override
+  public void setPropertyKeyValue(Map<String, Object> properties) {
+    this.values = properties;
+  }
 }

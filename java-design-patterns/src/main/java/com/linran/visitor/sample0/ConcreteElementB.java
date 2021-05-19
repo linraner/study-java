@@ -2,7 +2,7 @@ package com.linran.visitor.sample0;
 
 import java.util.Random;
 
-public class ConcreteElementB implements IElement{
+public class ConcreteElementB implements IElement {
 
   @Override
   public void accept(IVisitor visitor) {

@@ -8,5 +8,6 @@ package com.lin.basic.java8.lambda;
  **/
 @FunctionalInterface
 public interface DefinitionFunctionInterface<T> {
-    void accept(T t);
+
+  void accept(T t);
 }

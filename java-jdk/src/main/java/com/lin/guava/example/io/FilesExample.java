@@ -1,17 +1,5 @@
 package com.lin.guava.example.io;
 
-import com.google.common.base.Charsets;
-import com.google.common.collect.Lists;
-import com.google.common.hash.HashCode;
-import com.google.common.hash.Hashing;
-import com.google.common.io.ByteSink;
-import com.google.common.io.ByteSource;
-import com.google.common.io.CharStreams;
-import com.google.common.io.Files;
-
-import java.io.*;
-import java.util.List;
-
 /**
  * @author: linran
  * @email: linran@live.com

@@ -14,21 +14,22 @@ import lombok.ToString;
 @Getter
 @Setter
 public class Person {
-    private String id;
-    private String name;
-    private int age;
 
-    public Person() {
-    }
+  private String id;
+  private String name;
+  private int age;
 
-    public Person(String name, int age) {
-        this.name = name;
-        this.age = age;
-    }
+  public Person() {
+  }
 
-    public Person(String id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+  public Person(String name, int age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  public Person(String id, String name) {
+    this.id = id;
+    this.name = name;
+  }
 
 }

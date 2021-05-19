@@ -7,11 +7,12 @@ package com.lin.basic.classloader;
  * @Description:
  **/
 public class ClassLoaderTree {
-    public static void main(String[] args) {
-        ClassLoader loader = ClassLoaderTree.class.getClassLoader();
-        while (loader != null) {
-            System.out.println("loader = " + loader.toString());
-            loader = loader.getParent();
-        }
+
+  public static void main(String[] args) {
+    ClassLoader loader = ClassLoaderTree.class.getClassLoader();
+    while (loader != null) {
+      System.out.println("loader = " + loader.toString());
+      loader = loader.getParent();
     }
+  }
 }

@@ -6,7 +6,8 @@ public class FileUtils {
 
 
   public static void main(String[] args) {
-    System.out.println(Objects.requireNonNull(FileUtils.class.getClassLoader().getResource("`pwd`")).getPath());;
+    System.out.println(Objects.requireNonNull(FileUtils.class.getClassLoader().getResource("`pwd`")).getPath());
+    ;
   }
 
 }

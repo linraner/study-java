@@ -1,4 +1,5 @@
 ## 三种方法获取Class对象
+
 ```java
 Class.forName();
 

@@ -42,37 +42,38 @@ import java.util.LinkedList;
 = 22
  */
 public class EvalRPN {
-    public static void main(String[] args) {
-        String[] s = {"4", "13", "5", "/", "+"};
-        System.out.println(evalRPN(s));
-    }
 
-    public static int evalRPN(String[] tokens) {
-        Deque<Character> stack = new LinkedList<>();
-        for (int i = 0; i < tokens.length; i++) {
-            Character ch = tokens[i].charAt(0);
-            if (0 <= ch && ch <= 9) {
-                stack.push(ch);
-            } else {
-                Character symbol = Character.valueOf(stack.pop());
-                int a = Integer.parseInt(String.valueOf(stack.pop()));
-                int b = Integer.parseInt(String.valueOf(stack.pop()));
-                switch (symbol) {
-                    case '+':
-                        stack.push((char) (a + b));
-                        break;
-                    case '-':
-                        stack.push((char) (a - b));
-                        break;
-                    case '*':
-                        stack.push((char) (a * b));
-                        break;
-                    case '/':
-                        stack.push((char) (a / b));
-                        break;
-                }
-            }
+  public static void main(String[] args) {
+    String[] s = {"4", "13", "5", "/", "+"};
+    System.out.println(evalRPN(s));
+  }
+
+  public static int evalRPN(String[] tokens) {
+    Deque<Character> stack = new LinkedList<>();
+    for (int i = 0; i < tokens.length; i++) {
+      Character ch = tokens[i].charAt(0);
+      if (0 <= ch && ch <= 9) {
+        stack.push(ch);
+      } else {
+        Character symbol = Character.valueOf(stack.pop());
+        int a = Integer.parseInt(String.valueOf(stack.pop()));
+        int b = Integer.parseInt(String.valueOf(stack.pop()));
+        switch (symbol) {
+          case '+':
+            stack.push((char) (a + b));
+            break;
+          case '-':
+            stack.push((char) (a - b));
+            break;
+          case '*':
+            stack.push((char) (a * b));
+            break;
+          case '/':
+            stack.push((char) (a / b));
+            break;
         }
-        return Integer.parseInt(String.valueOf(stack.pop()));
+      }
     }
+    return Integer.parseInt(String.valueOf(stack.pop()));
+  }
 }

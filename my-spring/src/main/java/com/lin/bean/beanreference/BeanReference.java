@@ -7,13 +7,14 @@ package com.lin.bean.beanreference;
  * @Description:
  **/
 public class BeanReference {
-    private String beanName;
 
-    public String getBeanName() {
-        return beanName;
-    }
+  private String beanName;
 
-    public void setBeanName(String beanName) {
-        this.beanName = beanName;
-    }
+  public String getBeanName() {
+    return beanName;
+  }
+
+  public void setBeanName(String beanName) {
+    this.beanName = beanName;
+  }
 }

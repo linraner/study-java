@@ -26,52 +26,49 @@ minStack.pop();
 minStack.top();      --> 返回 0.
 minStack.getMin();   --> 返回 -2.
  */
+
 /**
- * Your MinStack object will be instantiated and called as such:
- * MinStack obj = new MinStack();
- * obj.push(x);
- * obj.pop();
- * int param_3 = obj.top();
- * int param_4 = obj.getMin();
+ * Your MinStack object will be instantiated and called as such: MinStack obj = new MinStack(); obj.push(x); obj.pop(); int param_3 = obj.top(); int param_4 = obj.getMin();
  */
 public class MinStack {
-    private Stack<Integer> stackData;
-    private Stack<Integer> stackMin;
+
+  private Stack<Integer> stackData;
+  private Stack<Integer> stackMin;
 
 
-    /**
-     * initialize your data structure here.
-     */
-    public MinStack() {
-        this.stackData = new Stack<>();
-        this.stackMin = new Stack<>();
+  /**
+   * initialize your data structure here.
+   */
+  public MinStack() {
+    this.stackData = new Stack<>();
+    this.stackMin = new Stack<>();
+  }
+
+  public void push(int x) {
+    stackData.push(x);
+    if (stackMin.isEmpty()) {
+      stackMin.push(x);
+    } else if (x <= this.getMin()) {
+      stackMin.push(x);
     }
+  }
 
-    public void push(int x) {
-        stackData.push(x);
-        if (stackMin.isEmpty()) {
-            stackMin.push(x);
-        } else if (x <= this.getMin()) {
-            stackMin.push(x);
-        }
+  public void pop() {
+    Integer value = stackData.pop();
+    if (value.equals(getMin())) {
+      stackMin.pop();
     }
+  }
 
-    public void pop() {
-        Integer value = stackData.pop();
-        if (value.equals(getMin())) {
-            stackMin.pop();
-        }
-    }
+  public int top() {
+    return this.stackData.peek();
+  }
 
-    public int top() {
-        return this.stackData.peek();
+  public int getMin() {
+    if (stackMin.isEmpty()) {
+      throw new RuntimeException("the minStack is empty");
     }
-
-    public int getMin() {
-        if (stackMin.isEmpty()) {
-            throw new RuntimeException("the minStack is empty");
-        }
-        return stackMin.peek();
-    }
+    return stackMin.peek();
+  }
 }
 

@@ -7,14 +7,16 @@ package com.lin.bean.BeanDefinition;
  * @Description:
  **/
 public interface BeanDefinitionRegistry {
-    /**
-     * 注册bean到bean工厂
-     * @param bd
-     * @param beanName
-     */
-    void register(BeanDefinition bd, String beanName);
 
-    boolean containsBeanDefinition(String beanName);
+  /**
+   * 注册bean到bean工厂
+   *
+   * @param bd
+   * @param beanName
+   */
+  void register(BeanDefinition bd, String beanName);
 
-    BeanDefinition getBeanDefinition(String beanName);
+  boolean containsBeanDefinition(String beanName);
+
+  BeanDefinition getBeanDefinition(String beanName);
 }

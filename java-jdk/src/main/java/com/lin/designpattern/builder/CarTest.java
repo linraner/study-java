@@ -7,8 +7,9 @@ package com.lin.designpattern.builder;
  * @Description:
  **/
 public class CarTest {
-    public static void main(String[] args) {
-        Car car = new Car.Builder().carBody("奔驰")
-                .safetyBelt(null).build();
-    }
+
+  public static void main(String[] args) {
+    Car car = new Car.Builder().carBody("奔驰")
+        .safetyBelt(null).build();
+  }
 }

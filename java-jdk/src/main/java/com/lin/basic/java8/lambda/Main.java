@@ -14,73 +14,80 @@ import java.util.function.BinaryOperator;
  **/
 public class Main {
 
-    Runnable r1 = () -> System.out.println(this);
-    Runnable r2 = () -> System.out.println(toString());
+  Runnable r1 = () -> System.out.println(this);
+  Runnable r2 = () -> System.out.println(toString());
 
 
-    public static void main(String[] args) {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                // do
-            }
-        }).start();
+  public static void main(String[] args) {
+    new Thread(new Runnable() {
+      @Override
+      public void run() {
+        // do
+      }
+    }).start();
 
-        new Thread(() ->{
-            // do
-        }).start();
+    new Thread(() -> {
+      // do
+    }).start();
 
-        List<String> list = Arrays.asList("Bye", "hello", "ok", "QWQ", "asda");
-        Collections.sort(list, new Comparator<String>() {
-            @Override
-            public int compare(String o1, String o2) {
-                if (o1 == null) return -1;
-                if (o2 == null) return 1;
-                return o1.length() - o2.length();
-            }
-        });
+    List<String> list = Arrays.asList("Bye", "hello", "ok", "QWQ", "asda");
+    Collections.sort(list, new Comparator<String>() {
+      @Override
+      public int compare(String o1, String o2) {
+        if (o1 == null) {
+          return -1;
+        }
+        if (o2 == null) {
+          return 1;
+        }
+        return o1.length() - o2.length();
+      }
+    });
 
-        Collections.sort(list, (o1, o2)->{
-            if (o1 ==null) return -1;
-            if (o2 ==null) return 1;
-            return o1.length() - o2.length();
-        });
+    Collections.sort(list, (o1, o2) -> {
+      if (o1 == null) {
+        return -1;
+      }
+      if (o2 == null) {
+        return 1;
+      }
+      return o1.length() - o2.length();
+    });
 
-        new Main().r1.run();
-        new Main().r2.run();
+    new Main().r1.run();
+    new Main().r2.run();
+
+    //
+    BinaryOperator<Long> add = (Long a, Long b) -> a + b;
+
+    // 自定义函数式接口
+    DefinitionFunctionInterface<String> definitionFunctionInterface = str -> System.out.println(str);
+    // else use class
+    MyStream<String> stream = new MyStream<>();
+    stream.myForEach(str -> System.out.println(str));
 
 
-        //
-        BinaryOperator<Long> add = (Long a, Long b) ->  a + b;
+  }
 
-        // 自定义函数式接口
-        DefinitionFunctionInterface<String> definitionFunctionInterface = str -> System.out.println(str);
-        // else use class
-        MyStream<String> stream = new MyStream<>();
-        stream.myForEach(str -> System.out.println(str));
+  static void test() {
+    System.out.println("this is a test demo");
 
+  }
 
-
-    }
-
-    static void test() {
-        System.out.println("this is a test demo");
-
-    }
-
-    @Override
-    public String toString() {
-        return "Main to String";
-    }
+  @Override
+  public String toString() {
+    return "Main to String";
+  }
 }
 
 class MyStream<T> {
-    private List<T> list;
 
-    public void myForEach(DefinitionFunctionInterface<T> definitionFunctionInterface) {
-        for (T t : list) {
-            definitionFunctionInterface.accept(t);
-        }
+  private List<T> list;
 
+  public void myForEach(DefinitionFunctionInterface<T> definitionFunctionInterface) {
+    for (T t : list) {
+      definitionFunctionInterface.accept(t);
     }
+
+  }
 }

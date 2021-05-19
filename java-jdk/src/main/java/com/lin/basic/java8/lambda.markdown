@@ -18,6 +18,7 @@ new Thread(() ->{
 ```
 
 ## 带参函数简写
+
 ```
 List<String> list = Arrays.asList("Bye", "hello", "ok", "QWQ", "asda");
 // jdk7

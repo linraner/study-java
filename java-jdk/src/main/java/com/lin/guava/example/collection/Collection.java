@@ -9,16 +9,17 @@ import com.google.common.collect.ImmutableSet;
  * @Description:
  **/
 public class Collection {
-    // 不可变集合
-    private static final ImmutableSet<String> COLOR_NAMES = ImmutableSet.of(
-            "red",
-            "orange",
-            "yellow",
-            "blue",
-            "green"
-    );
 
-    // 统计词频
+  // 不可变集合
+  private static final ImmutableSet<String> COLOR_NAMES = ImmutableSet.of(
+      "red",
+      "orange",
+      "yellow",
+      "blue",
+      "green"
+  );
+
+  // 统计词频
 
 
 }

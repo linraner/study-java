@@ -9,32 +9,34 @@ import java.lang.reflect.Method;
  * @Description:
  **/
 public class ReflectDemo {
-    public static void main(String[] args) throws IllegalAccessException, InstantiationException, NoSuchMethodException {
-        Class<?> clazz = MethodClass.class;
-        Object object = clazz.newInstance();
-        Method[] methods = clazz.getMethods();
-        Method[] declaredMethods = clazz.getDeclaredMethods();
-        Method method = clazz.getMethod("add", int.class, int.class);
 
-        for (Method m : methods) {
-            System.out.println("method = " + m);
-        }
+  public static void main(String[] args) throws IllegalAccessException, InstantiationException, NoSuchMethodException {
+    Class<?> clazz = MethodClass.class;
+    Object object = clazz.newInstance();
+    Method[] methods = clazz.getMethods();
+    Method[] declaredMethods = clazz.getDeclaredMethods();
+    Method method = clazz.getMethod("add", int.class, int.class);
 
-        for (Method m : declaredMethods) {
-            System.out.println("declaredMethod = " + m);
-        }
-
+    for (Method m : methods) {
+      System.out.println("method = " + m);
     }
+
+    for (Method m : declaredMethods) {
+      System.out.println("declaredMethod = " + m);
+    }
+
+  }
 }
 
 class MethodClass {
-    public final int ans = 3;
 
-    public int add(int a, int b) {
-        return a + b;
-    }
+  public final int ans = 3;
 
-    public int sub(int a, int b) {
-        return a + b;
-    }
+  public int add(int a, int b) {
+    return a + b;
+  }
+
+  public int sub(int a, int b) {
+    return a + b;
+  }
 }

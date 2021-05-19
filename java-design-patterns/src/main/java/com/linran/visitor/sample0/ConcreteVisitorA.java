@@ -1,6 +1,6 @@
 package com.linran.visitor.sample0;
 
-public class ConcreteVisitorA implements IVisitor{
+public class ConcreteVisitorA implements IVisitor {
 
   @Override
   public void visit(ConcreteElementA element) {
