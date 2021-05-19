@@ -1,6 +1,6 @@
 package com.linran.visitor.sample0;
 
-public class ConcreteVisitorA implements IVisitor {
+public class ConcreteVisitorB implements IVisitor{
 
   @Override
   public void visit(ConcreteElementA element) {
@@ -11,18 +11,18 @@ public class ConcreteVisitorA implements IVisitor {
             " result: " +
             operate
     );
+
   }
 
   @Override
   public void visit(ConcreteElementB element) {
     int operate = element.operateB();
     System.out.println(
-        "class" +
+        "class: " +
             element.getClass().getSimpleName() +
             " result: " +
             operate
     );
 
   }
-
 }
