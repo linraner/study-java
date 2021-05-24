@@ -13,6 +13,7 @@
     <module>my-spring</module>
     <module>interview</module>
     <module>java-design-patterns</module>
+    <module>algorithm</module>
   </modules>
 
   <properties>
