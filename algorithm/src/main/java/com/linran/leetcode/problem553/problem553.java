@@ -31,25 +31,26 @@ public class problem553 {
       System.out.println(solution.optimalDivision(nums));
     }
   }
-}
 
-class Solution {
+  static class Solution {
 
-  public String optimalDivision(int[] nums) {
-    if (nums.length == 1) {
-      return String.valueOf(nums[0]);
+    public String optimalDivision(int[] nums) {
+      if (nums.length == 1) {
+        return String.valueOf(nums[0]);
+      }
+      if (nums.length == 2) {
+        return String.format("%d/%d", nums[0], nums[1]);
+      }
+      StringBuilder sb = new StringBuilder();
+      sb.append(nums[0]);
+      sb.append("/(");
+      for (int i = 1; i < nums.length - 1; i++) {
+        sb.append(nums[i]).append("/");
+      }
+      sb.append(nums[nums.length - 1]);
+      sb.append(")");
+      return sb.toString();
     }
-    if (nums.length == 2) {
-      return String.format("%d/%d", nums[0], nums[1]);
-    }
-    StringBuilder sb = new StringBuilder();
-    sb.append(nums[0]);
-    sb.append("/(");
-    for (int i = 1; i < nums.length - 1; i++) {
-      sb.append(nums[i]).append("/");
-    }
-    sb.append(nums[nums.length - 1]);
-    sb.append(")");
-    return sb.toString();
   }
 }
+

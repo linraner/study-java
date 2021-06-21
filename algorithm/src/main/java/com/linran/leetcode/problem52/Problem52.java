@@ -36,68 +36,68 @@ public class Problem52 {
 
   }
 
+  static class Solution {
+
+    private static int count = 0;
+
+    public int totalNQueens(int n) {
+      // 初始化掉
+      count = 0;
+      if (n < 1) {
+        return 0;
+      }
+      int[][] arr = new int[n][n];
+      for (int[] ints : arr) {
+        Arrays.fill(ints, 0);
+      }
+      slave(n, arr, 0);
+      return count;
+    }
+
+    private void slave(int n, int[][] arr, int row) {
+      if (n == row) {
+        count++;
+        return;
+      }
+      for (int col = 0; col < n; col++) {
+        if (!valid(arr, n, row, col)) {
+          continue;
+        }
+        arr[row][col] = 1;
+        slave(n, arr, row + 1);
+        arr[row][col] = 0;
+      }
+    }
+
+    private boolean valid(int[][] arr, int n, int row, int col) {
+      for (int i = 0; i < row; i++) {
+        if (isMatch(arr[i][col])) {
+          return false;
+        }
+      }
+      for (int i = 0; i < col; i++) {
+        if (isMatch(arr[row][i])) {
+          return false;
+        }
+      }
+
+      for (int i = row - 1, j = col - 1; i >= 0 && j >= 0; i--, j--) {
+        if (isMatch(arr[i][j])) {
+          return false;
+        }
+      }
+
+      for (int i = row - 1, j = col + 1; i >= 0 && j < n; i--, j++) {
+        if (isMatch(arr[i][j])) {
+          return false;
+        }
+      }
+      return true;
+    }
+
+    private boolean isMatch(int val) {
+      return val == 1;
+    }
+  }
 }
 
-class Solution {
-
-  private static int count = 0;
-
-  public int totalNQueens(int n) {
-    // 初始化掉
-    count = 0;
-    if (n < 1) {
-      return 0;
-    }
-    int[][] arr = new int[n][n];
-    for (int[] ints : arr) {
-      Arrays.fill(ints, 0);
-    }
-    slave(n, arr, 0);
-    return count;
-  }
-
-  private void slave(int n, int[][] arr, int row) {
-    if (n == row) {
-      count++;
-      return;
-    }
-    for (int col = 0; col < n; col++) {
-      if (!valid(arr, n, row, col)) {
-        continue;
-      }
-      arr[row][col] = 1;
-      slave(n, arr, row + 1);
-      arr[row][col] = 0;
-    }
-  }
-
-  private boolean valid(int[][] arr, int n, int row, int col) {
-    for (int i = 0; i < row; i++) {
-      if (isMatch(arr[i][col])) {
-        return false;
-      }
-    }
-    for (int i = 0; i < col; i++) {
-      if (isMatch(arr[row][i])) {
-        return false;
-      }
-    }
-
-    for (int i = row - 1, j = col - 1; i >= 0 && j >= 0; i--, j--) {
-      if (isMatch(arr[i][j])) {
-        return false;
-      }
-    }
-
-    for (int i = row - 1, j = col + 1; i >= 0 && j < n; i--, j++) {
-      if (isMatch(arr[i][j])) {
-        return false;
-      }
-    }
-    return true;
-  }
-
-  private boolean isMatch(int val) {
-    return val == 1;
-  }
-}

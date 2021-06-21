@@ -40,85 +40,85 @@ public class Problem51 {
 
   }
 
+  static class Solution {
+
+    List<List<String>> result = new ArrayList<List<String>>();
+
+    public List<List<String>> solveNQueens(int n) {
+      char[][] area = new char[n][n];
+      for (char[] chars : area) {
+        Arrays.fill(chars, '.');
+      }
+      salve(n, area, 0);
+      return result;
+    }
+
+    private void saveResult(char[][] area) {
+      List<String> list = new ArrayList<String>();
+      for (char[] chars : area) {
+        list.add(String.copyValueOf(chars));
+      }
+      result.add(list);
+    }
+
+
+    private void salve(int n, char[][] area, int row) {
+      // 终止条件
+      if (row == n) {
+        saveResult(area);
+        return;
+      }
+      // 逐列遍历
+      for (int col = 0; col < n; col++) {
+        if (!valid(area, row, col, n)) {
+          continue;
+        }
+
+        process(area, row, col);
+        salve(n, area, row + 1);
+        // 恢复 area 进入下列选择
+        area[row][col] = '.';
+      }
+    }
+
+    private boolean valid(char[][] area, int row, int col, int n) {
+      // 同一行 同一列 对边
+      for (int i = 0; i < row; i++) {
+        if (isMatch(area[i][col])) {
+          return false;
+        }
+      }
+
+      for (int i = 0; i < col; i++) {
+        if (isMatch(area[row][i])) {
+          return false;
+        }
+      }
+
+      // 左上方
+      for (int i = row - 1, j = col - 1; i >= 0 && j >= 0; i--, j--) {
+        if (isMatch(area[i][j])) {
+          return false;
+        }
+      }
+
+      for (int i = row - 1, j = col + 1; i >= 0 && j < n; i--, j++) {
+        if (isMatch(area[i][j])) {
+          return false;
+        }
+      }
+      return true;
+    }
+
+    private boolean isMatch(char ch) {
+      return ch == 'Q';
+    }
+
+    private void process(char[][] area, int row, int col) {
+      area[row][col] = 'Q';
+    }
+
+
+  }
 }
 
-class Solution {
-
-  List<List<String>> result = new ArrayList<List<String>>();
-
-  public List<List<String>> solveNQueens(int n) {
-    char[][] area = new char[n][n];
-    for (char[] chars : area) {
-      Arrays.fill(chars, '.');
-    }
-    salve(n, area, 0);
-    return result;
-  }
-
-  private void saveResult(char[][] area) {
-    List<String> list = new ArrayList<String>();
-    for (char[] chars : area) {
-      list.add(String.copyValueOf(chars));
-    }
-    result.add(list);
-  }
-
-
-  private void salve(int n, char[][] area, int row) {
-    // 终止条件
-    if (row == n) {
-      saveResult(area);
-      return;
-    }
-    // 逐列遍历
-    for (int col = 0; col < n; col++) {
-      if (!valid(area, row, col, n)) {
-        continue;
-      }
-
-      process(area, row, col);
-      salve(n, area, row + 1);
-      // 恢复 area 进入下列选择
-      area[row][col] = '.';
-    }
-  }
-
-  private boolean valid(char[][] area, int row, int col, int n) {
-    // 同一行 同一列 对边
-    for (int i = 0; i < row; i++) {
-      if (isMatch(area[i][col])) {
-        return false;
-      }
-    }
-
-    for (int i = 0; i < col; i++) {
-      if (isMatch(area[row][i])) {
-        return false;
-      }
-    }
-
-    // 左上方
-    for (int i = row - 1, j = col - 1; i >= 0 && j >= 0; i--, j--) {
-      if (isMatch(area[i][j])) {
-        return false;
-      }
-    }
-
-    for (int i = row - 1, j = col + 1; i >= 0 && j < n; i--, j++) {
-      if (isMatch(area[i][j])) {
-        return false;
-      }
-    }
-    return true;
-  }
-
-  private boolean isMatch(char ch) {
-    return ch == 'Q';
-  }
-
-  private void process(char[][] area, int row, int col) {
-    area[row][col] = 'Q';
-  }
-
-
-}

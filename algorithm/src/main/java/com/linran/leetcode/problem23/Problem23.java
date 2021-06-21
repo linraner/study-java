@@ -1,6 +1,5 @@
 package com.linran.leetcode.problem23;
 
-import com.sun.imageio.plugins.jpeg.JPEGStreamMetadataFormat;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.Queue;
@@ -34,6 +33,29 @@ public class Problem23 {
 
   }
 
+  static class Solution {
+
+    public ListNode mergeKLists(ListNode[] lists) {
+      if (lists.length <=0) {
+        return new ListNode();
+      }
+      if (lists.length == 1) {
+        return lists[0];
+      }
+      Queue<ListNode> pq = new PriorityQueue<>(Comparator.comparingInt(v -> v.val));
+      for (ListNode node : lists) {
+        if (node != null) {
+          pq.offer(node);
+        }
+      }
+      ListNode target = new ListNode(-1);
+      while (!pq.isEmpty()) {
+
+      }
+
+      return target.next;
+    }
+  }
 }
 
 class ListNode {
@@ -54,26 +76,3 @@ class ListNode {
   }
 }
 
-class Solution {
-
-  public ListNode mergeKLists(ListNode[] lists) {
-    if (lists.length <=0) {
-      return new ListNode();
-    }
-    if (lists.length == 1) {
-      return lists[0];
-    }
-    Queue<ListNode> pq = new PriorityQueue<>(Comparator.comparingInt(v -> v.val));
-    for (ListNode node : lists) {
-      if (node != null) {
-        pq.offer(node);
-      }
-    }
-    ListNode target = new ListNode(-1);
-    while (!pq.isEmpty()) {
-
-    }
-
-    return target.next;
-  }
-}

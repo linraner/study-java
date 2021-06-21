@@ -29,20 +29,20 @@ public class problem837 {
 
   }
 
-}
-
-class Solution {
+  static class Solution {
 
 
-  /**
-   * 1.
-   * @param n
-   * @param k
-   * @param maxPts
-   * @return
-   */
-  public double new21Game(int n, int k, int maxPts) {
+    /**
+     * 1.
+     * @param n
+     * @param k
+     * @param maxPts
+     * @return
+     */
+    public double new21Game(int n, int k, int maxPts) {
 
-    return 0.0;
+      return 0.0;
+    }
   }
 }
+
