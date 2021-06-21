@@ -1,5 +1,10 @@
 package com.linran.leetcode.problem23;
 
+import com.sun.imageio.plugins.jpeg.JPEGStreamMetadataFormat;
+import java.util.Comparator;
+import java.util.PriorityQueue;
+import java.util.Queue;
+
 /**
  * 给你一个链表数组，每个链表都已经按升序排列。
  * <p>
@@ -23,6 +28,11 @@ package com.linran.leetcode.problem23;
  */
 public class Problem23 {
 
+  public static void main(String[] args) {
+
+
+
+  }
 
 }
 
@@ -53,11 +63,17 @@ class Solution {
     if (lists.length == 1) {
       return lists[0];
     }
+    Queue<ListNode> pq = new PriorityQueue<>(Comparator.comparingInt(v -> v.val));
+    for (ListNode node : lists) {
+      if (node != null) {
+        pq.offer(node);
+      }
+    }
     ListNode target = new ListNode(-1);
-    for (ListNode list : lists) {
-
+    while (!pq.isEmpty()) {
 
     }
-    return null;
+
+    return target.next;
   }
 }
