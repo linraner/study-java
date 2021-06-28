@@ -12,8 +12,8 @@
   <artifactId>netty-rpc</artifactId>
   <packaging>pom</packaging>
   <modules>
-    <module>untitled</module>
     <module>netty-rpc-common</module>
+    <module>netty-rpc-server</module>
   </modules>
 
   <properties>
