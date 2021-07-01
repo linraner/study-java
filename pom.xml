@@ -15,9 +15,6 @@
     <module>java-design-patterns</module>
     <module>algorithm</module>
     <module>netty-rpc</module>
-    <module>netty-rpc-server</module>
-    <module>netty-rpc-client</module>
-    <module>netty-rpc-common</module>
   </modules>
 
   <properties>

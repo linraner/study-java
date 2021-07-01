@@ -13,7 +13,6 @@
   <packaging>pom</packaging>
   <modules>
     <module>netty-rpc-common</module>
-    <module>netty-rpc-server</module>
   </modules>
 
   <properties>
