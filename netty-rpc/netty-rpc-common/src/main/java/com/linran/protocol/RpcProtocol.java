@@ -2,7 +2,12 @@ package com.linran.protocol;
 
 
 import com.google.common.base.Objects;
+import com.google.common.base.Preconditions;
+import com.linran.utils.Assert;
+import com.linran.utils.JsonUtils;
+import com.linran.utils.StringUtils;
 import java.io.Serializable;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 public class RpcProtocol implements Serializable {
@@ -13,6 +18,34 @@ public class RpcProtocol implements Serializable {
   private Integer port;
   private List<ServiceInfo> serviceInfos;
 
+  public static RpcProtocol of(
+      String host,
+      Integer port,
+      List<ServiceInfo> serviceInfos
+  ) {
+    Preconditions.checkArgument(StringUtils.isNotEmpty(host));
+    Preconditions.checkArgument(port > 1024);
+    RpcProtocol target = new RpcProtocol();
+    target.setHost(host);
+    target.setPort(port);
+    target.setServiceInfos(serviceInfos);
+    return target;
+  }
+
+  public static RpcProtocol fromJson(String jsonStr) {
+    Preconditions.checkArgument(StringUtils.isNotEmpty(jsonStr));
+    return JsonUtils.deserialize(jsonStr, RpcProtocol.class);
+  }
+
+  public String toJson() {
+    return JsonUtils.serialize(this);
+  }
+
+  public byte[] getRpcProtocolData() {
+    String s = this.toJson();
+    Assert.isTrue(StringUtils.isNotEmpty(s), "data not null");
+    return s.getBytes(StandardCharsets.UTF_8);
+  }
 
   public String getHost() {
     return host;

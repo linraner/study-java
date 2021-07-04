@@ -9,11 +9,21 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>netty-rpc-common</artifactId>
+  <artifactId>netty-rpc-server</artifactId>
 
   <properties>
     <maven.compiler.source>8</maven.compiler.source>
     <maven.compiler.target>8</maven.compiler.target>
+    <nett-rpc-common.version>1.0-SNAPSHOT</nett-rpc-common.version>
   </properties>
+
+
+  <dependencies>
+    <dependency>
+      <groupId>com.lin</groupId>
+      <artifactId>netty-rpc-common</artifactId>
+      <version>${nett-rpc-common.version}</version>
+    </dependency>
+  </dependencies>
 
 </project>

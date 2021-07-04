@@ -8,6 +8,7 @@ import java.util.List;
 import lombok.Getter;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
+import org.apache.curator.framework.state.ConnectionStateListener;
 import org.apache.curator.retry.ExponentialBackoffRetry;
 import org.apache.zookeeper.CreateMode;
 
@@ -28,36 +29,43 @@ public final class CuratorClient {
         .build();
   }
 
-  public static void create(final CuratorFramework client, final String path, final byte[] payload) throws Exception {
+  public void create(final String path, final byte[] payload) throws Exception {
     client.create().creatingParentsIfNeeded().forPath(path, payload);
   }
 
-  public static void createEphemeral(final CuratorFramework client, final String path, final byte[] payload) throws Exception {
+  public void createEphemeral(final String path, final byte[] payload) throws Exception {
     client.create().withMode(CreateMode.EPHEMERAL).forPath(path, payload);
   }
 
-  public static String createEphemeralSequential(final CuratorFramework client, final String path, final byte[] payload) throws Exception {
-    return client.create().withProtection().withMode(CreateMode.EPHEMERAL_SEQUENTIAL).forPath(path, payload);
+  public String createEphemeralSequential(final String path, final byte[] payload) throws Exception {
+    return client.create().creatingParentsIfNeeded().withProtection().withMode(CreateMode.EPHEMERAL_SEQUENTIAL).forPath(path, payload);
   }
 
-  public static void setData(final CuratorFramework client, final String path, final byte[] payload) throws Exception {
+  public void setData(final String path, final byte[] payload) throws Exception {
     client.setData().forPath(path, payload);
   }
 
-  public static void delete(final CuratorFramework client, final String path) throws Exception {
+  public void delete(final String path) throws Exception {
     client.delete().deletingChildrenIfNeeded().forPath(path);
   }
 
-  public static void guaranteedDelete(final CuratorFramework client, final String path) throws Exception {
+  public void guaranteedDelete(final String path) throws Exception {
     client.delete().guaranteed().forPath(path);
   }
 
-  public static String getData(final CuratorFramework client, final String path) throws Exception {
+  public String getData(final String path) throws Exception {
     return new String(client.getData().forPath(path));
   }
 
-  public static List<String> getChildren(final CuratorFramework client, final String path) throws Exception {
+  public List<String> getChildren(final String path) throws Exception {
     return client.getChildren().forPath(path);
   }
 
+  public void addConnectionStateListener(ConnectionStateListener connectionStateListener) {
+    client.getConnectionStateListenable().addListener(connectionStateListener);
+  }
+
+  public void close() {
+    client.close();
+  }
 }
