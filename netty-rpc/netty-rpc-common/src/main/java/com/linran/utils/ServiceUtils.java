@@ -2,7 +2,6 @@ package com.linran.utils;
 
 import com.google.common.base.Preconditions;
 import com.linran.protocol.ServiceInfo;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import org.springframework.util.CollectionUtils;
@@ -24,7 +23,6 @@ public final class ServiceUtils {
 
   public static String getKey(String interfaceName, String version) {
     Preconditions.checkArgument(StringUtils.isNotEmpty(interfaceName));
-    Preconditions.checkArgument(StringUtils.isNotEmpty(version));
     return interfaceName + SERVICE_SPLIT_TOKEN + version;
   }
 
