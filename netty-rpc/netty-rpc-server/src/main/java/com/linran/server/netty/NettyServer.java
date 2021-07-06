@@ -17,7 +17,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public  class NettyServer implements ServerLifeCycle {
+public class NettyServer implements ServerLifeCycle {
 
   private static final Logger log = LoggerFactory.getLogger(NettyServer.class);
   private final String serverAddress;
@@ -43,8 +43,11 @@ public  class NettyServer implements ServerLifeCycle {
           init();
         } catch (Exception e) {
           log.error("netty service start error: ", e);
-        } finally {
-          shutdown();
+          try {
+            serviceRegistry.unregister();
+          } finally {
+            shutdown();
+          }
         }
       }
     });
@@ -83,7 +86,6 @@ public  class NettyServer implements ServerLifeCycle {
 
   private void shutdown() {
     try {
-      serviceRegistry.unregister();
       workerGroup.shutdownGracefully();
       bossGroup.shutdownGracefully();
     } catch (Exception e) {
