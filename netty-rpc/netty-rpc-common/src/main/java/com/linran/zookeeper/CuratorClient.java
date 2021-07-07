@@ -8,6 +8,11 @@ import java.util.List;
 import lombok.Getter;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
+import org.apache.curator.framework.recipes.cache.CuratorCache;
+import org.apache.curator.framework.recipes.cache.CuratorCacheListener;
+import org.apache.curator.framework.recipes.cache.NodeCacheListener;
+import org.apache.curator.framework.recipes.cache.PathChildrenCache;
+import org.apache.curator.framework.recipes.cache.PathChildrenCacheListener;
 import org.apache.curator.framework.state.ConnectionStateListener;
 import org.apache.curator.retry.ExponentialBackoffRetry;
 import org.apache.zookeeper.CreateMode;
@@ -63,6 +68,13 @@ public final class CuratorClient {
 
   public void addConnectionStateListener(ConnectionStateListener connectionStateListener) {
     client.getConnectionStateListenable().addListener(connectionStateListener);
+  }
+
+
+  public void watchPathChildrenNode(String path, CuratorCacheListener listener) throws Exception {
+    CuratorCache curatorCache = CuratorCache.builder(client, path).build();
+    curatorCache.listenable().addListener(listener);
+    curatorCache.start();
   }
 
   public void close() {

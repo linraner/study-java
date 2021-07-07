@@ -14,6 +14,15 @@
   <properties>
     <maven.compiler.source>8</maven.compiler.source>
     <maven.compiler.target>8</maven.compiler.target>
+    <netty-rpc-common.version>1.0-SNAPSHOT</netty-rpc-common.version>
   </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.lin</groupId>
+      <artifactId>netty-rpc-common</artifactId>
+      <version>${netty-rpc-common.version}</version>
+    </dependency>
+  </dependencies>
 
 </project>
