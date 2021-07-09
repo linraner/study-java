@@ -11,4 +11,8 @@ public final class CollectionsUtils {
     return list == null || list.size() == 0;
   }
 
+  public static <T> boolean isNotEmpty(Collection<T> list) {
+    return !isEmpty(list);
+  }
+
 }
