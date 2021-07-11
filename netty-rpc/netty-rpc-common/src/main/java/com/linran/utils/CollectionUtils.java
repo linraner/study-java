@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-public final class CollectionsUtils {
+public final class CollectionUtils {
 
 
   public static <T> boolean isEmpty(Collection<T> list) {

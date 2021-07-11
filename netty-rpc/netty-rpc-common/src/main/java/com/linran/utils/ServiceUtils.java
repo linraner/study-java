@@ -1,10 +1,10 @@
 package com.linran.utils;
 
 import com.google.common.base.Preconditions;
+import com.linran.protocol.RpcProtocol;
 import com.linran.protocol.ServiceInfo;
 import java.util.Collections;
 import java.util.List;
-import org.springframework.util.CollectionUtils;
 
 public final class ServiceUtils {
 
@@ -26,5 +26,8 @@ public final class ServiceUtils {
     return interfaceName + SERVICE_SPLIT_TOKEN + version;
   }
 
+  public static boolean isAvailableServer(RpcProtocol server) {
+    return server != null && CollectionUtils.isNotEmpty(server.getServiceInfos());
+  }
 
 }

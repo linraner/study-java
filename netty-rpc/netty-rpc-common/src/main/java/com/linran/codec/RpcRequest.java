@@ -6,12 +6,18 @@ public  class RpcRequest implements Serializable {
 
   private static final long serialVersionUID = 6075550534864995305L;
 
+  public static RpcRequest PING = new RpcRequest("REQUEST_PING");
+
   private String requestId;
   private String className;
   private String methodName;
   private Class<?>[] paramTypes;
   private Object[] params;
   private String version;
+
+  public RpcRequest(String requestId) {
+    this.requestId = requestId;
+  }
 
   public String getRequestId() {
     return requestId;

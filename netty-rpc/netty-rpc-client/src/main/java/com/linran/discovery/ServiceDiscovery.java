@@ -2,6 +2,7 @@ package com.linran.discovery;
 
 import static com.linran.constants.ZkConstants.ZK_RPC_REGISTRY_PATH;
 
+import com.linran.connect.ConnectManager;
 import com.linran.protocol.RpcProtocol;
 import com.linran.zookeeper.CuratorClient;
 import java.nio.charset.StandardCharsets;
@@ -16,7 +17,7 @@ public final class ServiceDiscovery {
 
   private static final Logger log = LoggerFactory.getLogger(ServiceDiscovery.class);
 
-  private CuratorClient curatorClient;
+  private final CuratorClient curatorClient;
 
   public ServiceDiscovery(String registryAddress) {
     this.curatorClient = new CuratorClient(registryAddress);
@@ -26,8 +27,7 @@ public final class ServiceDiscovery {
   private void discovery() {
     try {
       log.info("init service info");
-      updateChildData();
-
+      findAndUpdate();
       curatorClient.watchPathChildrenNode(
           ZK_RPC_REGISTRY_PATH,
           (type, oldData, data) -> {
@@ -49,7 +49,7 @@ public final class ServiceDiscovery {
   private void findAndUpdate() {
     try {
       List<String> children = curatorClient.getChildren(ZK_RPC_REGISTRY_PATH);
-      List<RpcProtocol> rpcProtocols = new LinkedList<>(children.size());
+      List<RpcProtocol> rpcProtocols = new LinkedList<>();
       for (String child : children) {
         log.info("child :{}", child);
         String data = curatorClient.getData(ZK_RPC_REGISTRY_PATH + "/" + child);
@@ -57,7 +57,7 @@ public final class ServiceDiscovery {
         rpcProtocols.add(rpcProtocol);
       }
 
-
+      updateConnectServer(rpcProtocols);
 
     } catch (Exception e) {
       log.error("fetch node error: ", e);
@@ -70,21 +70,17 @@ public final class ServiceDiscovery {
     String data = new String(childData.getData(), StandardCharsets.UTF_8);
     log.info("child data type:{}, update path :{}, data:{}", type, path, data);
     RpcProtocol rpcProtocol = RpcProtocol.fromJson(data);
-    updateChildData(rpcProtocol);
+    updateConnectServer(rpcProtocol, type);
   }
-
-  private void updateChildData(RpcProtocol rpcProtocol) {
-    // todo:
-  }
-
+  // =============== manager =========================
 
   private void updateConnectServer(List<RpcProtocol> rpcProtocols) {
-
-
+    ConnectManager.getInstance().updateConnectServer(rpcProtocols);
   }
 
-
-
-
+  private void updateConnectServer(RpcProtocol rpcProtocol, CuratorCacheListener.Type type) {
+    ConnectManager.getInstance().updateConnectServer(rpcProtocol, type);
+  }
+  // =============== manager end =========================
 
 }

@@ -4,7 +4,7 @@ import static com.linran.constants.ZkConstants.ZK_DATA_PATH;
 
 import com.linran.protocol.RpcProtocol;
 import com.linran.protocol.ServiceInfo;
-import com.linran.utils.CollectionsUtils;
+import com.linran.utils.CollectionUtils;
 import com.linran.utils.ServiceUtils;
 import com.linran.zookeeper.CuratorClient;
 import java.util.ArrayList;
@@ -30,7 +30,7 @@ public final class ServiceRegistryImpl implements ServiceRegistry {
   @Override
   public void register(String host, int port, Map<String, Object> serviceMap) {
     List<ServiceInfo> serviceInfos = getServiceInfos(serviceMap);
-    if (CollectionsUtils.isEmpty(serviceInfos)) {
+    if (CollectionUtils.isEmpty(serviceInfos)) {
       log.warn("no service info registry");
       return;
     }
