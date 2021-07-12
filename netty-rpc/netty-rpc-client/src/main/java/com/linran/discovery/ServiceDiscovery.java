@@ -83,4 +83,8 @@ public final class ServiceDiscovery {
   }
   // =============== manager end =========================
 
+
+  public void stop() {
+
+  }
 }
