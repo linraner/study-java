@@ -7,7 +7,7 @@ public class RpcServerBootstrap0 {
 
   public static void main(String[] args) throws Exception {
     String serverAddress = "127.0.0.1:18080";
-    String registryAddress = "127.0.0.1:2181";
+    String registryAddress = "59.110.225.203:2181";
     RpcServer server = new RpcServer(serverAddress, registryAddress);
     HelloService helloService = new HelloService0();
     server.addService(HelloService.class.getSimpleName(), "", helloService);

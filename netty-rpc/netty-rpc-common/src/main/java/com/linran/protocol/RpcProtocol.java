@@ -1,6 +1,7 @@
 package com.linran.protocol;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
 import com.linran.utils.Assert;
@@ -9,7 +10,9 @@ import com.linran.utils.StringUtils;
 import java.io.Serializable;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
+import lombok.Data;
 
+@Data
 public class RpcProtocol implements Serializable {
 
   private static final long serialVersionUID = 6249905924754041787L;
@@ -41,10 +44,18 @@ public class RpcProtocol implements Serializable {
     return JsonUtils.serialize(this);
   }
 
+  /**
+   * 循环引用
+   * @return
+   */
+  @JsonIgnore
   public byte[] getRpcProtocolData() {
     String s = this.toJson();
     Assert.isTrue(StringUtils.isNotEmpty(s), "data not null");
     return s.getBytes(StandardCharsets.UTF_8);
+  }
+
+  public RpcProtocol() {
   }
 
   public String getHost() {

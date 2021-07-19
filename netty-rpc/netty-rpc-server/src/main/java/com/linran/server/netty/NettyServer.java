@@ -81,6 +81,7 @@ public class NettyServer implements ServerLifeCycle {
     String[] arr = serverAddress.split(":");
     String host = arr[0];
     int port = Integer.parseInt(arr[1]);
+    serviceRegistry.register(host, port, serviceMap);
     bootstrap.bind(host, port).sync();
   }
 

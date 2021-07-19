@@ -21,6 +21,7 @@ public final class ServiceDiscovery {
 
   public ServiceDiscovery(String registryAddress) {
     this.curatorClient = new CuratorClient(registryAddress);
+    discovery();
   }
 
 

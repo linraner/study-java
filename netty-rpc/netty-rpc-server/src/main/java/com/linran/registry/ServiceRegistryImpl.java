@@ -44,13 +44,10 @@ public final class ServiceRegistryImpl implements ServiceRegistry {
       log.error("registry server error, host: {}, port:{}, server:{}", host, port, serviceMap, e);
     }
 
-    curatorClient.addConnectionStateListener(new ConnectionStateListener() {
-      @Override
-      public void stateChanged(CuratorFramework curatorFramework, ConnectionState connectionState) {
-        if (ConnectionState.RECONNECTED == connectionState) {
-          log.info("server will reconnect, state:{}", connectionState);
-          register(host, port, serviceMap);
-        }
+    curatorClient.addConnectionStateListener((curatorFramework, connectionState) -> {
+      if (ConnectionState.RECONNECTED == connectionState) {
+        log.info("server will reconnect, state:{}", connectionState);
+        register(host, port, serviceMap);
       }
     });
 

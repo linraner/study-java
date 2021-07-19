@@ -18,9 +18,9 @@ public interface ZkConstants {
   // =============== retry end =======================
 
   // =============== zk path =======================
-  String ZK_RPC_REGISTRY_PATH = "/zookeeper/netty-rpc-registry/";
+  String ZK_RPC_REGISTRY_PATH = "/netty-rpc-registry";
   String ZK_DATA_PATH = ZK_RPC_REGISTRY_PATH + "/data";
-  String ZK_NAMESPACE = "netty-tpc";
+  String ZK_NAMESPACE = "netty-rpc";
   // =============== zk path end =======================
 
 }

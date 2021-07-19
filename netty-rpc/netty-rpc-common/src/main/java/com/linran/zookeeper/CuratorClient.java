@@ -10,9 +10,6 @@ import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.framework.recipes.cache.CuratorCache;
 import org.apache.curator.framework.recipes.cache.CuratorCacheListener;
-import org.apache.curator.framework.recipes.cache.NodeCacheListener;
-import org.apache.curator.framework.recipes.cache.PathChildrenCache;
-import org.apache.curator.framework.recipes.cache.PathChildrenCacheListener;
 import org.apache.curator.framework.state.ConnectionStateListener;
 import org.apache.curator.retry.ExponentialBackoffRetry;
 import org.apache.zookeeper.CreateMode;
@@ -32,6 +29,7 @@ public final class CuratorClient {
         .sessionTimeoutMs(ZK_SESSION_TIMEOUT)
         .namespace(ZK_NAMESPACE)
         .build();
+    client.start();
   }
 
   public void create(final String path, final byte[] payload) throws Exception {
@@ -42,8 +40,8 @@ public final class CuratorClient {
     client.create().withMode(CreateMode.EPHEMERAL).forPath(path, payload);
   }
 
-  public String createEphemeralSequential(final String path, final byte[] payload) throws Exception {
-    return client.create().creatingParentsIfNeeded().withProtection().withMode(CreateMode.EPHEMERAL_SEQUENTIAL).forPath(path, payload);
+  public void createEphemeralSequential(final String path, final byte[] payload) throws Exception {
+    client.create().creatingParentsIfNeeded().withProtection().withMode(CreateMode.EPHEMERAL_SEQUENTIAL).forPath(path, payload);
   }
 
   public void setData(final String path, final byte[] payload) throws Exception {
