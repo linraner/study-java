@@ -11,7 +11,7 @@ public class RpcClient0 {
   public static void main(String[] args) throws Exception {
     String zkAddress = "127.0.0.1:2181";
     RpcClient client0 = new RpcClient(zkAddress);
-    RpcService asyncService = client0.createAsyncService(HelloService.class, "");
+    RpcService asyncService = RpcClient.createAsyncService(HelloService.class, "");
     RpcFuture helloFuture = asyncService.call("hello");
     helloFuture.addCallback(new AsyncCallback() {
       @Override
