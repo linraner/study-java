@@ -16,6 +16,11 @@ public class HelloService0 implements HelloService {
 
 
   @Override
+  public String hello() {
+    return "hello";
+  }
+
+  @Override
   public String hello(Date now) {
     log.info("call date : {}", now);
     return LocalDateTime.now().toString();

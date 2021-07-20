@@ -10,6 +10,7 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import java.util.Map;
 import java.util.concurrent.ThreadPoolExecutor;
 import lombok.Setter;
+import net.sf.cglib.core.Signature;
 import net.sf.cglib.reflect.FastClass;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,7 +50,7 @@ public class RpcServerHandler extends SimpleChannelInboundHandler<RpcRequest> {
   }
 
   @VisibleForTesting
-  Object handle(RpcRequest req) throws Throwable {
+  public Object handle(RpcRequest req) throws Throwable {
     String className = req.getClassName();
     String version = req.getVersion();
     String serviceKey = ServiceUtils.getKey(className, version);

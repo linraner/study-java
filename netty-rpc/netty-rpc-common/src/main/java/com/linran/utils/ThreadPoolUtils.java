@@ -234,5 +234,4 @@ public final class ThreadPoolUtils {
     }
     return queue;
   }
-
 }
