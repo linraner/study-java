@@ -57,7 +57,7 @@ public final class ConnectManager {
    */
   public void updateConnectServer(List<RpcProtocol> servers) {
     if (CollectionUtils.isEmpty(servers)) {
-      log.error("No available server!");
+      log.error("No available server! will close connect!");
       for (RpcProtocol rpcProtocol : rpcProtoColSet) {
         closeConnectServerNode(rpcProtocol);
       }
