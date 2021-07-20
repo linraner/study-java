@@ -40,7 +40,7 @@ public class RpcClient implements ApplicationContextAware, DisposableBean {
     );
   }
 
-  public static <T, P> RpcService createAsyncService(Class<T> interfaceClass, String version) {
+  public  <T, P> RpcService createAsyncService(Class<T> interfaceClass, String version) {
     return new ObjectProxy<T, P>(interfaceClass, version);
   }
 

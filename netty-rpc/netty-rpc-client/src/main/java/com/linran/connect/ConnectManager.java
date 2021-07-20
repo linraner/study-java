@@ -110,6 +110,7 @@ public final class ConnectManager {
   public RpcClientHandler getHandle(String serviceKey) throws Exception {
     while (RUNNING && MapUtils.isEmpty(connectServerNodeMap)) {
       try {
+        log.info("waitingForHandler...");
         waitingForHandler();
       } catch (InterruptedException e) {
         log.error("Waiting server is interrupted!");
