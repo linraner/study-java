@@ -1,5 +1,6 @@
 package com.linran.server.netty;
 
+import com.google.common.annotations.VisibleForTesting;
 import com.linran.codec.RpcRequest;
 import com.linran.codec.RpcResponse;
 import com.linran.utils.ServiceUtils;
@@ -8,6 +9,7 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import java.util.Map;
 import java.util.concurrent.ThreadPoolExecutor;
+import lombok.Setter;
 import net.sf.cglib.reflect.FastClass;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,7 +48,8 @@ public class RpcServerHandler extends SimpleChannelInboundHandler<RpcRequest> {
     });
   }
 
-  private Object handle(RpcRequest req) throws Throwable {
+  @VisibleForTesting
+  Object handle(RpcRequest req) throws Throwable {
     String className = req.getClassName();
     String version = req.getVersion();
     String serviceKey = ServiceUtils.getKey(className, version);

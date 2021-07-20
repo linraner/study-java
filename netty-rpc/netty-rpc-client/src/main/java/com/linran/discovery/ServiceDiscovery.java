@@ -4,6 +4,7 @@ import static com.linran.constants.ZkConstants.ZK_RPC_REGISTRY_PATH;
 
 import com.linran.connect.ConnectManager;
 import com.linran.protocol.RpcProtocol;
+import com.linran.utils.StringUtils;
 import com.linran.zookeeper.CuratorClient;
 import java.nio.charset.StandardCharsets;
 import java.util.LinkedList;
@@ -69,6 +70,10 @@ public final class ServiceDiscovery {
   private void updateChildData(ChildData childData, CuratorCacheListener.Type type) {
     String path = childData.getPath();
     String data = new String(childData.getData(), StandardCharsets.UTF_8);
+    if (StringUtils.isEmpty(data)) {
+      log.warn("UpdateChildData is empty, type:{}, path:{}", type, path);
+      return;
+    }
     log.info("child data type:{}, update path :{}, data:{}", type, path, data);
     RpcProtocol rpcProtocol = RpcProtocol.fromJson(data);
     updateConnectServer(rpcProtocol, type);

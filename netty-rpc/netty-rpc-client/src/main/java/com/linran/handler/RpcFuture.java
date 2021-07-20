@@ -141,4 +141,16 @@ public final class RpcFuture implements Future<Object> {
     }
   }
 
+  @Override
+  public String toString() {
+    return "RpcFuture{" +
+        "pendingCallbacks=" + pendingCallbacks +
+        ", lock=" + lock +
+        ", sync=" + sync +
+        ", request=" + request +
+        ", startAt=" + startAt +
+        ", responseTimeThreshold=" + responseTimeThreshold +
+        ", response=" + response +
+        '}';
+  }
 }

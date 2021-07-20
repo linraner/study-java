@@ -36,18 +36,15 @@ public class NettyServer implements ServerLifeCycle {
 
   @Override
   public void start() throws Exception {
-    runThread = new Thread(new Runnable() {
-      @Override
-      public void run() {
+    runThread = new Thread(() -> {
+      try {
+        init();
+      } catch (Exception e) {
+        log.error("netty service start error: ", e);
         try {
-          init();
-        } catch (Exception e) {
-          log.error("netty service start error: ", e);
-          try {
-            serviceRegistry.unregister();
-          } finally {
-            shutdown();
-          }
+          serviceRegistry.unregister();
+        } finally {
+          shutdown();
         }
       }
     });
